@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="num1" />
+    <input type="text" id="operator" />
+    <input type="text" id="num2" />
+    <button id="btn">Rēķināt</button>
+    <p id="output"></p>
+
+    <script>
+      let num1Input = document.getElementById("num1");
+      let operatorInput = document.getElementById("operator");
+      let num2Input = document.getElementById("num2");
+      let btn = document.getElementById("btn");
+      let output = document.getElementById("output");
+
+      btn.addEventListener("click", handleClick);
+
+      function handleClick() {
+        let num1 = parseInt(num1Input.value); // "1" -> 1
+        let num2 = parseInt(num2Input.value); // "2" -> 2
+        let operator = operatorInput.value; // "+"
+
+        //ivadates pārpaude masīvu
+        let errors = validateUserInput();
+        let errorMessege = "<ul>";
+        //kur klabāt datu kļ''udas'
+        //testa kļūdu masīvu
+
+        if (errors.length > 0) {
+          for (let i = 0; i < errors.length; i++) {
+            // output.innerHTML = i;
+            //outputErrorMessege = errorMessege + error[i];
+            errorMessege += "<li>" + errors[i] + "</li>";
+          }
+          errorMessege += "</ul>";
+          output.innerHTML = errorMessege;
+        } else {
+          output.innerHTML = `Rezultāts: ${calculate(num1, num2, operator)}`;
+        }
+      }
+
+      function calculate(n1, n2, op) {
+        switch (op) {
+          case "+":
+            return n1 + n2;
+          case "-":
+            return n1 - n2;
+          case "*":
+            return n1 * n2;
+          case "/":
+            return n1 / n2;
+
+          default:
+            return "kļūdains operātors";
+        }
+      }
+
+      function validateUserInput() {
+        let result = [
+          "Pirmais skaitlis nav ievadīts",
+          "kļūdains operātors",
+          "Pētdējais skaitlis nav ievadīts",
+        ];
+        return result;
+      }
+    </script>
+  </body>
+</html>

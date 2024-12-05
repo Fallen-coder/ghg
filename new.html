@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select name="money" id="currency">
+      <option value="USD">USD</option>
+      <option value="GBP">GBP</option>
+      <option value="CHF">CHF</option>
+    </select>
+
+    <input type="text" id="eur" placeholder="EUR" />
+
+    <button id="button">apstiprini</button>
+    <p id="output"></p>
+
+    <script>
+      let btn = document.getElementById("button");
+      let currencyselect = document.getElementById("currency");
+      let output = document.getElementById("output");
+      let eurInput = document.getElementById("eur");
+
+      let rates = {
+        USD: 1.05,
+        GBP: 0.83,
+        CHF: 0.93,
+      };
+
+      btn.addEventListener("click", handelClick);
+
+      function handelClick() {
+        output.innerHTML = eurInput.value * rates[currencyselect.value];
+      }
+    </script>
+  </body>
+</html>

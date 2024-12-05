@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select name="money" id="currency">
+      <option value="USD">USD</option>
+      <option value="GBP">GBP</option>
+      <option value="CHF">CHF</option>
+    </select>
+
+    <input type="text" id="eur" placeholder="EUR" />
+
+    <button id="button">apstiprini</button>
+    <p id="output"></p>
+
+    <script>
+      let btn = document.getElementById("button");
+      let currencyselect = document.getElementById("currency");
+      let output = document.getElementById("output");
+      let eurInput = document.getElementById("eur");
+
+      btn.addEventListener("click", handelClick);
+
+      function handelClick() {
+        //console.log(currencyselect.value);
+
+        if (currencyselect.value == "USD") {
+          //console.log(eurInput.value * 1.05);
+          output.innerHTML = eurInput.value * 1.05;
+        }
+        if (currencyselect.value == "GBP") {
+          //console.log(eurInput.value * 0.83);
+          output.innerHTML = eurInput.value * 0.83;
+        }
+        if (currencyselect.value == "CHF") {
+          // console.log(eurInput.value * 0.93);
+          output.innerHTML = eurInput.value * 0.93;
+        }
+      }
+    </script>
+  </body>
+</html>
